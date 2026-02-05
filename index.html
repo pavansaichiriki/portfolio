@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; }
@@ -22,22 +21,6 @@
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         .scroll-smooth { scroll-behavior: smooth; }
-        
-        /* Chat Widget Animations */
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .chat-animate { animation: slideIn 0.3s ease-out forwards; }
-        .typing-dot {
-            animation: typing 1.4s infinite ease-in-out both;
-        }
-        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-        @keyframes typing {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
-        }
 
         /* Blueprint Modal Styles */
         .blueprint-bg {
@@ -639,70 +622,7 @@
         </div>
     </div>
 
-    <!-- Chat Widget HTML -->
-    <div id="chat-widget-container" class="fixed bottom-6 right-6 z-50">
-        <!-- Chat Toggle Button -->
-        <button id="chat-toggle" class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white p-4 rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center w-16 h-16 relative">
-            <i class="fas fa-sparkles text-2xl absolute transition-all duration-300 opacity-100 scale-100" id="icon-open"></i>
-            <i class="fas fa-times text-2xl absolute transition-all duration-300 opacity-0 scale-50" id="icon-close"></i>
-        </button>
-
-        <!-- Chat Window -->
-        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden chat-animate origin-bottom-right" style="height: 500px;">
-            <!-- Header -->
-            <div class="bg-gradient-to-r from-blue-600 to-cyan-500 p-4 text-white flex justify-between items-center relative">
-                <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                        <i class="fas fa-robot text-sm"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-sm">Pavan's AI Assistant</h3>
-                        <p class="text-xs text-blue-100 flex items-center"><span class="w-2 h-2 bg-green-400 rounded-full mr-1 animate-pulse"></span> Online</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-2">
-                    <button id="settings-btn" class="text-white/80 hover:text-white" title="Settings"><i class="fas fa-cog"></i></button>
-                    <button id="close-chat" class="text-white/80 hover:text-white"><i class="fas fa-minus"></i></button>
-                </div>
-                
-                <!-- Settings Popover -->
-                <div id="settings-popover" class="hidden absolute top-14 right-2 bg-white rounded-lg shadow-xl p-3 border border-gray-200 z-50 w-64 text-gray-800">
-                    <p class="text-xs font-bold mb-2">API Configuration</p>
-                    <input type="password" id="api-key-input" placeholder="Paste Gemini API Key" class="w-full text-xs p-2 border rounded mb-2">
-                    <button id="save-api-key" class="w-full bg-blue-600 text-white text-xs py-1 rounded hover:bg-blue-700">Save Key</button>
-                    <p class="text-[10px] text-gray-400 mt-2">Key stored locally in browser.</p>
-                </div>
-            </div>
-
-            <!-- Messages Area -->
-            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4 bg-gray-50">
-                <!-- Welcome Message -->
-                <div class="flex items-start space-x-2">
-                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 text-blue-600">
-                        <i class="fas fa-robot text-xs"></i>
-                    </div>
-                    <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm border border-gray-100 text-sm text-gray-700">
-                        Hi! I'm Pavan's AI assistant. Ask me anything about his engineering experience, skills, or projects! ✨
-                    </div>
-                </div>
-            </div>
-
-            <!-- Input Area -->
-            <div class="p-4 bg-white border-t border-gray-100">
-                <div class="flex space-x-2">
-                    <input type="text" id="chat-input" placeholder="Ask about Hylio, FEA, or Skills..." class="flex-1 bg-gray-100 border-0 rounded-full px-4 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none">
-                    <button id="send-btn" class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                        <i class="fas fa-paper-plane text-xs"></i>
-                    </button>
-                </div>
-                <div class="text-[10px] text-gray-400 text-center mt-2 flex items-center justify-center">
-                    Powered by <i class="fas fa-bolt text-yellow-400 mx-1"></i> Gemini
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Logic for Chat & Modal -->
+    <!-- Logic for Modal -->
     <script>
         // --- 1. Project Details Data & Images ---
         
@@ -836,7 +756,6 @@
         };
 
         // --- 2. Initialize Thumbnails ---
-        // Automatically inject Images into project cards based on ID
         window.addEventListener('DOMContentLoaded', () => {
             Object.keys(projectData).forEach(key => {
                 const el = document.getElementById(`thumb-${key}`);
@@ -904,236 +823,6 @@
         // Close on click outside
         modal.addEventListener('click', (e) => {
             if (e.target === modal) closeModal();
-        });
-
-        // --- 4. Resume Context (The Brains) ---
-        const resumeContext = `
-        You are an AI assistant for Pavan Sai Chiriki's portfolio. You answer questions from recruiters or visitors professionally and concisely.
-        
-        PROFILE:
-        - Name: Pavan Sai Chiriki
-        - Role: Manufacturing Engineer
-        - Location: Houston, TX
-        - Email: 3pavansai@gmail.com
-        - Phone: (805) 670-4797
-        - Summary: 7+ years exp in production optimization, machine efficiency. Expert in PTC Creo, AutoCAD, SolidWorks, Lean Six Sigma, Thermal Systems Analysis.
-
-        EXPERIENCE:
-        1. Hylio Inc (Houston, TX) [Jan 2025-Present]:
-           - Production Engineer.
-           - Overhauled HLY-150 assembly workflow (not AG lines).
-           - Created Drone Build Manuals for the team.
-           - Updated BOMs.
-           - Split production into Pre-assembly and Assembly lines to increase daily throughput.
-           - Checked integration reports between R&D and Production.
-           - Created work orders and managed workforce.
-           - Zero defects in final QC.
-           - Guided team of 15 (12 techs, 3 engineers).
-           - Reduced carbon-fiber frame lead times by 15%.
-           - Saved $50k annually via Fishbowl Inventory.
-        
-        2. Advanced Structural Technologies (Oxnard, CA) [Jan 2024-Jan 2025]:
-           - Manufacturing Engineer.
-           - Implemented 100% preventive maintenance (30% less unplanned downtime).
-           - Commissioned 3 high-capacity production systems (+25% throughput).
-           - Designed custom material handling tools.
-           - Redesigned production workflow.
-        
-        3. DENSO Corporation (Haryana, India) [Jun 2018-Aug 2022]:
-           - Senior Engineer & Engineer roles.
-           - Reduced breakdown freq from 10% to 2% via predictive maintenance.
-           - Reduced defect rates from 24% to 2.0%.
-           - Synthesized global breakdown data.
-           - Implemented advanced analytics system.
-
-        EDUCATION:
-        - M.S. Mechanical Engineering, University of South Florida (2022-2023).
-          - GPA: 3.79/4.0
-          - Key Courses: Robotic Systems (A-), Applied Elasticity (A), Fracture Mechanics (A), Python for Data Science (A), Probabilistic Systems Analysis (A), Connected & Autonomous Vehicles.
-        - B.Tech Mechanical Engineering, NIT Meghalaya (2014-2018).
-
-        KEY PROJECTS:
-        - HLY-150 Production Line Overhaul (Hylio): Split lines into pre-assembly/assembly, created build manuals, managed workforce.
-        - Force Balance Analysis (BTP Thesis): "Experimental and Finite Element Analysis of Accelerometer Force Balance". Used ANSYS & Impact Hammers to validate design for hypersonic testing.
-        - Advanced Analytics System (DENSO): Reduced breakdown freq from 10% to 2% and maintenance costs by 15%.
-        - 6-DoF Robotic Arm (USF Project): Designed and simulated a 6-axis robot. Used SolidWorks for design, ROS/RVIZ for visualization, and MATLAB for kinematic analysis (DH parameters, Jacobian).
-        - ATV Design & Fabrication (Bachelor's): Designed and fabricated an All-Terrain Vehicle using a 950 Series Briggs & Stratton engine. Used Carbon Fiber components for lightweighting. Performed stress/strain testing with FEA and modeled in SolidWorks.
-        - Digital QA Protocol & App (Hylio): Implemented digital QA protocols, replacing manual checklists and reducing errors.
-
-        SKILLS:
-        - Tools: PTC Creo, SolidWorks, AutoCAD, ANSYS Workbench, Fishbowl Inventory.
-        - Methods: Lean Six Sigma, PFMEA, Kaizen, Root Cause Analysis.
-        - Tech: PLC, HMI, Finite Element Analysis (FEA).
-
-        BEHAVIOR:
-        - Be friendly, professional, and brief (2-3 sentences max unless asked for detail).
-        - Use emojis sparingly.
-        - If asked for contact info, provide email/phone.
-        - If asked about something not in the resume, say "I don't have that info, but you can contact Pavan directly!"
-        `;
-
-        // --- 5. Gemini API Integration Functions ---
-        const HARDCODED_API_KEY = "AIzaSyA0tqTF8nK21beh1iMLaUTMOeyy6H4e3ZA"; // User provided API Key
-        
-        let userApiKey = localStorage.getItem('gemini_api_key') || HARDCODED_API_KEY;
-
-        // --- 6. Chat UI Logic ---
-        const toggleBtn = document.getElementById('chat-toggle');
-        const chatWindow = document.getElementById('chat-window');
-        const closeBtn = document.getElementById('close-chat');
-        const settingsBtn = document.getElementById('settings-btn');
-        const settingsPopover = document.getElementById('settings-popover');
-        const saveKeyBtn = document.getElementById('save-api-key');
-        const keyInput = document.getElementById('api-key-input');
-        
-        const input = document.getElementById('chat-input');
-        const sendBtn = document.getElementById('send-btn');
-        const messagesContainer = document.getElementById('chat-messages');
-
-        let isOpen = false;
-
-        function toggleChat() {
-            isOpen = !isOpen;
-            if (isOpen) {
-                chatWindow.classList.remove('hidden');
-            } else {
-                chatWindow.classList.add('hidden');
-                settingsPopover.classList.add('hidden');
-            }
-        }
-
-        toggleBtn.addEventListener('click', toggleChat);
-        closeBtn.addEventListener('click', toggleChat);
-        
-        settingsBtn.addEventListener('click', () => {
-            settingsPopover.classList.toggle('hidden');
-            keyInput.value = userApiKey;
-        });
-
-        saveKeyBtn.addEventListener('click', () => {
-            const newKey = keyInput.value.trim();
-            if (newKey) {
-                userApiKey = newKey;
-                localStorage.setItem('gemini_api_key', newKey);
-                alert("API Key Saved! Chat is ready.");
-                settingsPopover.classList.add('hidden');
-            }
-        });
-
-        // --- 7. Message Handling ---
-        function addMessage(text, sender) {
-            const div = document.createElement('div');
-            div.className = sender === 'user' ? 'flex items-end justify-end space-x-2' : 'flex items-start space-x-2';
-            
-            const avatar = sender === 'user' 
-                ? `<div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white flex-shrink-0"><i class="fas fa-user text-xs"></i></div>`
-                : `<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0"><i class="fas fa-robot text-xs"></i></div>`;
-            
-            const bubbleColor = sender === 'user' 
-                ? 'bg-blue-600 text-white rounded-tr-none' 
-                : 'bg-white text-gray-700 border border-gray-100 rounded-tl-none';
-
-            // Parse markdown for AI responses
-            const content = sender === 'bot' ? marked.parse(text) : text;
-
-            div.innerHTML = sender === 'user' 
-                ? `<div class="max-w-[80%] p-3 rounded-2xl ${bubbleColor} shadow-sm text-sm">${content}</div>${avatar}`
-                : `${avatar}<div class="max-w-[80%] p-3 rounded-2xl ${bubbleColor} shadow-sm text-sm prose prose-sm">${content}</div>`;
-            
-            messagesContainer.appendChild(div);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function showTyping() {
-            const div = document.createElement('div');
-            div.id = 'typing-indicator';
-            div.className = 'flex items-start space-x-2';
-            div.innerHTML = `
-                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0"><i class="fas fa-robot text-xs"></i></div>
-                <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-gray-100 flex space-x-1 h-10 items-center">
-                    <div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div>
-                    <div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div>
-                    <div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div>
-                </div>
-            `;
-            messagesContainer.appendChild(div);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function removeTyping() {
-            const el = document.getElementById('typing-indicator');
-            if (el) el.remove();
-        }
-
-        // --- 8. Gemini API Integration (Chat) ---
-        async function handleSend() {
-            const text = input.value.trim();
-            if (!text) return;
-
-            addMessage(text, 'user');
-            input.value = '';
-            input.disabled = true;
-            showTyping();
-
-            // Check if key is available
-            let finalKey = userApiKey;
-            // Fallback for demo environment (if provided by variable)
-            if (!finalKey && typeof apiKey !== 'undefined') finalKey = apiKey;
-
-            if (!finalKey) {
-                removeTyping();
-                addMessage("⚠️ **API Key Missing**: To chat with me on GitHub, please click the Settings (⚙️) icon above and paste a valid Google Gemini API Key.", 'bot');
-                input.disabled = false;
-                return;
-            }
-
-            try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${finalKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{
-                            role: "user",
-                            parts: [{ text: `Context: ${resumeContext}\n\nUser Question: ${text}` }]
-                        }],
-                        systemInstruction: {
-                            parts: [{ text: "You are Pavan's portfolio assistant. Use the provided context to answer questions. Keep answers short, professional, and friendly." }]
-                        }
-                    })
-                });
-
-                const data = await response.json();
-                removeTyping();
-
-                if (data.error) {
-                    addMessage("Oops! I'm having trouble connecting to my brain right now. Please check your API key.", 'bot');
-                    console.error(data.error);
-                } else {
-                    const reply = data.candidates[0].content.parts[0].text;
-                    addMessage(reply, 'bot');
-                }
-
-            } catch (error) {
-                removeTyping();
-                addMessage("Sorry, something went wrong. Please check your connection.", 'bot');
-                console.error(error);
-            } finally {
-                input.disabled = false;
-                input.focus();
-            }
-        }
-
-        sendBtn.addEventListener('click', handleSend);
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleSend();
-        });
-
-        // Simple Mobile Menu Toggle (Existing)
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
         });
     </script>
 </body>
