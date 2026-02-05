@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavan Sai Chiriki | Manufacturing Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Oswald', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .gradient-text {
+            background: linear-gradient(90deg, #2563eb, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .scroll-smooth { scroll-behavior: smooth; }
+        
+        /* Chat Widget Animations */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chat-animate { animation: slideIn 0.3s ease-out forwards; }
+        .typing-dot {
+            animation: typing 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* Blueprint Modal Styles */
+        .blueprint-bg {
+            background-color: #f8fafc;
+            background-image: 
+                linear-gradient(#e2e8f0 1px, transparent 1px),
+                linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .blueprint-border {
+            border: 2px solid #2563eb;
+            position: relative;
+        }
+        .blueprint-border::after {
+            content: "CONFIDENTIAL // ENGINEERING DATA";
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #fff;
+            padding: 0 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #2563eb;
+            font-weight: bold;
+        }
+        .tech-diagram {
+            background-color: #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Image styling for cards */
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-blue-100 selection:text-blue-900 scroll-smooth">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold tracking-tighter text-gray-900">Pavan Sai <span class="text-blue-600">Chiriki</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">About</a>
+                    <a href="#skills" class="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Skills</a>
+                    <a href="#projects" class="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Projects</a>
+                    <a href="#experience" class="text-gray-600 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Experience</a>
+                    <a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-all shadow-md hover:shadow-lg">Contact Me</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <a href="#about" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">About</a>
+            <a href="#skills" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Skills</a>
+            <a href="#projects" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Projects</a>
+            <a href="#experience" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Experience</a>
+            <a href="#contact" class="block px-4 py-2 text-blue-600 font-bold hover:bg-gray-50">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-10">
+            <svg class="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 C 20 0 50 0 100 100 Z" fill="#2563eb" />
+            </svg>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+                <div>
+                    <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-6xl mb-6">
+                        Optimizing Production.<br>
+                        <span class="gradient-text">Driving Innovation.</span>
+                    </h1>
+                    <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto lg:mx-0">
+                        Manufacturing Engineer with 7+ years of expertise in production line optimization, thermal systems analysis, and lean manufacturing. Turning complex designs into scalable reality using PTC Creo, SolidWorks, and Data Analytics.
+                    </p>
+                    <div class="mt-8 flex justify-center lg:justify-start gap-4">
+                        <a href="documents/pavan resume (1).pdf" target="_blank" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:text-lg transition-all shadow-lg hover:shadow-xl flex items-center">
+                            <i class="fas fa-file-download mr-2"></i> Download Resume
+                        </a>
+                        <a href="#projects" class="px-8 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 md:text-lg transition-all shadow-sm hover:shadow-md">
+                            View Projects
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0 relative">
+                    <!-- Technical Illustration / Icon -->
+                    <div class="relative mx-auto w-full rounded-lg shadow-2xl lg:max-w-md bg-white p-8 border border-gray-100 overflow-hidden">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="h-3 w-3 rounded-full bg-red-500"></div>
+                            <div class="h-3 w-3 rounded-full bg-yellow-500 mx-2"></div>
+                            <div class="h-3 w-3 rounded-full bg-green-500"></div>
+                            <div class="flex-grow bg-gray-100 h-6 ml-4 rounded-md"></div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-microchip text-blue-500 text-2xl mr-4"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Production Efficiency</h4>
+                                    <p class="text-sm text-gray-500">Optimized throughput by +25%</p>
+                                </div>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                            
+                            <div class="flex items-center mt-6">
+                                <i class="fas fa-plane-departure text-cyan-500 text-2xl mr-4"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Quality Control</h4>
+                                    <p class="text-sm text-gray-500">Achieved 99% First-Pass Yield</p>
+                                </div>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-cyan-500 h-2.5 rounded-full" style="width: 99%"></div>
+                            </div>
+
+                            <div class="flex items-center mt-6">
+                                <i class="fas fa-chart-line text-indigo-500 text-2xl mr-4"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Downtime Reduction</h4>
+                                    <p class="text-sm text-gray-500">Reduced breakdowns from 10% to 2%</p>
+                                </div>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-indigo-500 h-2.5 rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Technical Expertise</h2>
+                <p class="mt-4 text-xl text-gray-500">A comprehensive toolkit for modern manufacturing.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Skill Card 1 -->
+                <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all border border-gray-100">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+                        <i class="fas fa-drafting-compass text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">CAD & Design</h3>
+                    <ul class="text-gray-600 space-y-1 text-sm">
+                        <li>PTC Creo</li>
+                        <li>SolidWorks</li>
+                        <li>AutoCAD</li>
+                        <li>Technical Blueprints</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 2 -->
+                <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all border border-gray-100">
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 text-green-600">
+                        <i class="fas fa-industry text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Manufacturing</h3>
+                    <ul class="text-gray-600 space-y-1 text-sm">
+                        <li>Lean Six Sigma</li>
+                        <li>PFMEA & Quality Control</li>
+                        <li>Line Optimization</li>
+                        <li>Fishbowl Inventory</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all border border-gray-100">
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 text-purple-600">
+                        <i class="fas fa-chart-pie text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Analysis & Automation</h3>
+                    <ul class="text-gray-600 space-y-1 text-sm">
+                        <li>ANSYS Workbench</li>
+                        <li>FEA / Thermal Analysis</li>
+                        <li>PLC & HMI Programming</li>
+                        <li>Predictive Maintenance</li>
+                    </ul>
+                </div>
+
+                <!-- Skill Card 4 -->
+                <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition-all border border-gray-100">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 text-orange-600">
+                        <i class="fas fa-users-cog text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Operational Leadership</h3>
+                    <ul class="text-gray-600 space-y-1 text-sm">
+                        <li>Process Improvement</li>
+                        <li>Vendor Negotiation</li>
+                        <li>Team Mentorship</li>
+                        <li>Root Cause Analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-semibold tracking-wide uppercase">Portfolio</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl mt-2">Key Engineering Projects</h2>
+                <p class="mt-4 text-lg text-gray-500">Highlighting successful outcomes in aerospace, automation, and industrial manufacturing.</p>
+            </div>
+
+            <div class="grid gap-8 lg:grid-cols-3">
+
+                <!-- Project 1: Drone Optimization -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden project-card transition-all duration-300 flex flex-col">
+                    <div class="h-48 tech-diagram overflow-hidden" id="thumb-drone">
+                        <!-- Image injected via JS -->
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold px-2 py-1 bg-blue-100 text-blue-800 rounded-full">Aerospace</span>
+                            <span class="text-xs text-gray-500">Hylio Inc.</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">AG-Series Drone Production Scale-Up</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-1">
+                            Overhauled the assembly workflow for AG-210 and AG-216 models. Split lines into Pre-Assembly and Assembly, reducing build time by 30%.
+                        </p>
+                        <div class="border-t border-gray-100 pt-4 mt-auto">
+                            <button onclick="openModal('drone')" class="w-full text-center text-blue-600 text-sm font-semibold hover:text-blue-800 transition-colors">
+                                <i class="fas fa-file-alt mr-2"></i> View Technical Specs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Testing Rig -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden project-card transition-all duration-300 flex flex-col">
+                    <div class="h-48 tech-diagram overflow-hidden" id="thumb-testing">
+                        <!-- Image injected via JS -->
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold px-2 py-1 bg-green-100 text-green-800 rounded-full">Quality Assurance</span>
+                            <span class="text-xs text-gray-500">Hylio Inc.</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Flight-Critical Component Testing Protocol</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-1">
+                            Designed and implemented a bespoke testing rig and protocol for avionics and propulsion systems, reducing field failures by 25%.
+                        </p>
+                        <div class="border-t border-gray-100 pt-4 mt-auto">
+                            <button onclick="openModal('testing')" class="w-full text-center text-blue-600 text-sm font-semibold hover:text-blue-800 transition-colors">
+                                <i class="fas fa-file-alt mr-2"></i> View Technical Specs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Production System Commissioning -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden project-card transition-all duration-300 flex flex-col">
+                    <div class="h-48 tech-diagram overflow-hidden" id="thumb-infrastructure">
+                        <!-- Image injected via JS -->
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold px-2 py-1 bg-purple-100 text-purple-800 rounded-full">Infrastructure</span>
+                            <span class="text-xs text-gray-500">Adv. Structural Tech</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">High-Capacity Manufacturing Line</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-1">
+                            Researched, procured, and commissioned three new high-capacity production systems, increasing throughput by 25%.
+                        </p>
+                        <div class="border-t border-gray-100 pt-4 mt-auto">
+                            <button onclick="openModal('infrastructure')" class="w-full text-center text-blue-600 text-sm font-semibold hover:text-blue-800 transition-colors">
+                                <i class="fas fa-file-alt mr-2"></i> View Technical Specs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Predictive Maintenance -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden project-card transition-all duration-300 flex flex-col">
+                    <div class="h-48 tech-diagram overflow-hidden" id="thumb-denso">
+                        <!-- Image injected via JS -->
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold px-2 py-1 bg-red-100 text-red-800 rounded-full">Data Analytics</span>
+                            <span class="text-xs text-gray-500">DENSO Corp</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Advanced Analytics & Predictive Maintenance</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-1">
+                            Implemented an advanced analytics system identifying equipment failure trends, reducing breakdown frequency from 10% to 2%.
+                        </p>
+                        <div class="border-t border-gray-100 pt-4 mt-auto">
+                            <button onclick="openModal('denso')" class="w-full text-center text-blue-600 text-sm font-semibold hover:text-blue-800 transition-colors">
+                                <i class="fas fa-file-alt mr-2"></i> View Technical Specs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Force Balance (BTP Project) -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden project-card transition-all duration-300 flex flex-col">
+                    <div class="h-48 tech-diagram overflow-hidden" id="thumb-forcebalance">
+                        <!-- Image injected via JS -->
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full">Academic R&D</span>
+                            <span class="text-xs text-gray-500">BTP Project</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Experimental & FEA of Force Balance</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-1">
+                            Designed and analyzed a multi-component accelerometer force balance for hypersonic testing. Validated FEA models using ANSYS.
+                        </p>
+                        <div class="border-t border-gray-100 pt-4 mt-auto">
+                            <button onclick="openModal('forcebalance')" class="w-full text-center text-blue-600 text-sm font-semibold hover:text-blue-800 transition-colors">
+                                <i class="fas fa-file-alt mr-2"></i> View Technical Specs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: AST Workflow (Renamed from Lean) -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden project-card transition-all duration-300 flex flex-col">
+                    <div class="h-48 tech-diagram overflow-hidden" id="thumb-lean">
+                        <!-- Image injected via JS -->
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold px-2 py-1 bg-orange-100 text-orange-800 rounded-full">Process Eng</span>
+                            <span class="text-xs text-gray-500">Adv. Structural Tech</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">AST Workflow & Preventive Maintenance</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-1">
+                            Implemented 100% preventive maintenance program reducing unplanned downtime by 30%. Redesigned production workflow for safety.
+                        </p>
+                        <div class="border-t border-gray-100 pt-4 mt-auto">
+                            <button onclick="openModal('lean')" class="w-full text-center text-blue-600 text-sm font-semibold hover:text-blue-800 transition-colors">
+                                <i class="fas fa-file-alt mr-2"></i> View Technical Specs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7: 6-DoF Robotic Arm -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden project-card transition-all duration-300 flex flex-col">
+                    <div class="h-48 tech-diagram overflow-hidden" id="thumb-robotarm">
+                        <!-- Image injected via JS -->
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold px-2 py-1 bg-indigo-100 text-indigo-800 rounded-full">Robotics & Simulation</span>
+                            <span class="text-xs text-gray-500">USF Project</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">6-DoF Robotic Arm</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-1">
+                            Designed and simulated a 6-Degree-of-Freedom robotic arm prototype. Utilized Denavit-Hartenberg (DH) parameters for kinematic analysis.
+                        </p>
+                        <div class="border-t border-gray-100 pt-4 mt-auto">
+                            <button onclick="openModal('robotarm')" class="w-full text-center text-blue-600 text-sm font-semibold hover:text-blue-800 transition-colors">
+                                <i class="fas fa-file-alt mr-2"></i> View Technical Specs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8: ATV Design & Fabrication -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden project-card transition-all duration-300 flex flex-col">
+                    <div class="h-48 tech-diagram overflow-hidden" id="thumb-atv">
+                        <!-- Image injected via JS -->
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold px-2 py-1 bg-amber-100 text-amber-800 rounded-full">Automotive Design</span>
+                            <span class="text-xs text-gray-500">Bachelors Project</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">All-Terrain Vehicle (ATV) Fabrication</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-1">
+                            Designed and fabricated a lightweight ATV using a 950 Series Briggs & Stratton engine. Integrated carbon fiber materials for chassis.
+                        </p>
+                        <div class="border-t border-gray-100 pt-4 mt-auto">
+                            <button onclick="openModal('atv')" class="w-full text-center text-blue-600 text-sm font-semibold hover:text-blue-800 transition-colors">
+                                <i class="fas fa-file-alt mr-2"></i> View Technical Specs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9: Drone QA App -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden project-card transition-all duration-300 flex flex-col">
+                    <div class="h-48 tech-diagram overflow-hidden" id="thumb-qa_app">
+                        <!-- Image injected via JS -->
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-bold px-2 py-1 bg-teal-100 text-teal-800 rounded-full">Software & Automation</span>
+                            <span class="text-xs text-gray-500">Hylio Inc.</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Digital QA Protocol & App</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-1">
+                            Digitized the QA testing protocol with a custom app, automating checks and replacing manual checklists to reduce data entry errors.
+                        </p>
+                        <div class="border-t border-gray-100 pt-4 mt-auto">
+                            <button onclick="openModal('qa_app')" class="w-full text-center text-blue-600 text-sm font-semibold hover:text-blue-800 transition-colors">
+                                <i class="fas fa-file-alt mr-2"></i> View Technical Specs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-12 text-center">Professional Journey</h2>
+            
+            <div class="relative border-l-4 border-blue-200 ml-6 md:ml-0">
+                
+                <!-- Role 1 -->
+                <div class="mb-12 ml-8 md:ml-12 relative">
+                    <div class="absolute -left-12 md:-left-16 bg-blue-600 h-8 w-8 rounded-full border-4 border-white flex items-center justify-center">
+                        <i class="fas fa-briefcase text-white text-xs"></i>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm">
+                        <div class="flex flex-col md:flex-row justify-between mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Production Engineer</h3>
+                            <span class="text-blue-600 font-semibold text-sm">Jan 2025 - Present</span>
+                        </div>
+                        <h4 class="text-gray-700 font-medium mb-4">Hylio Inc | Houston, TX</h4>
+                        <p class="text-gray-600 text-sm">Overhauled AG-210 & AG-216 assembly workflows. Created comprehensive build manuals and updated BOMs. Split production into pre-assembly and assembly lines to boost daily output. Manage workforce, generate work orders, and coordinate integration reports between R&D and Production. Saved $50k annually via Fishbowl Inventory.</p>
+                    </div>
+                </div>
+
+                <!-- Role 2 -->
+                <div class="mb-12 ml-8 md:ml-12 relative">
+                    <div class="absolute -left-12 md:-left-16 bg-gray-400 h-8 w-8 rounded-full border-4 border-white flex items-center justify-center">
+                        <i class="fas fa-briefcase text-white text-xs"></i>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm">
+                        <div class="flex flex-col md:flex-row justify-between mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Manufacturing Engineer</h3>
+                            <span class="text-gray-500 font-semibold text-sm">Jan 2024 - Jan 2025</span>
+                        </div>
+                        <h4 class="text-gray-700 font-medium mb-4">Advanced Structural Technologies | Oxnard, CA</h4>
+                        <p class="text-gray-600 text-sm">Implemented 100% preventive maintenance program. Designed custom material handling tools for safety compliance. Led performance initiatives improving efficiency by 15%.</p>
+                    </div>
+                </div>
+
+                <!-- Role 3 -->
+                <div class="mb-12 ml-8 md:ml-12 relative">
+                    <div class="absolute -left-12 md:-left-16 bg-gray-400 h-8 w-8 rounded-full border-4 border-white flex items-center justify-center">
+                        <i class="fas fa-briefcase text-white text-xs"></i>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-100 shadow-sm">
+                        <div class="flex flex-col md:flex-row justify-between mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">Senior Engineer</h3>
+                            <span class="text-gray-500 font-semibold text-sm">Jun 2018 - Aug 2022</span>
+                        </div>
+                        <h4 class="text-gray-700 font-medium mb-4">DENSO Corporation | Haryana, India</h4>
+                        <p class="text-gray-600 text-sm">Reduced defect rates from 24% to 2.0%. Implemented energy-saving measures cutting costs by 10%. Mentored junior engineers and synthesized global breakdown data.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+             <h2 class="text-3xl font-extrabold text-gray-900 mb-8">Education</h2>
+             <div class="flex flex-col md:flex-row justify-center gap-6">
+                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex-1">
+                    <i class="fas fa-graduation-cap text-blue-600 text-3xl mb-3"></i>
+                    <h3 class="font-bold text-gray-900">M.S. Mechanical Engineering</h3>
+                    <p class="text-gray-600">University of South Florida</p>
+                    <p class="text-sm text-gray-400">2022 - 2023</p>
+                    <div class="mt-2 text-sm text-gray-500">
+                        <p class="font-semibold text-blue-600">GPA: 3.79 / 4.0</p>
+                        <p class="mt-1">Relevant Coursework: Robotics Systems, Applied Elasticity, Fracture Mechanics, Python for Data Science, Autonomous Vehicles.</p>
+                        <div class="mt-3">
+                            <a href="documents/transcriopt.pdf" target="_blank" class="inline-flex items-center text-xs font-semibold text-blue-600 hover:text-blue-800 transition-colors">
+                                <i class="fas fa-file-alt mr-1"></i> View Transcript
+                            </a>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex-1">
+                    <i class="fas fa-university text-gray-600 text-3xl mb-3"></i>
+                    <h3 class="font-bold text-gray-900">B.Tech Mechanical Engineering</h3>
+                    <p class="text-gray-600">NIT Meghalaya</p>
+                    <p class="text-sm text-gray-400">2014 - 2018</p>
+                 </div>
+             </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-slate-950 text-white py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold font-oswald mb-4">Ready to Optimize Your Production?</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-8">
+                Currently open to opportunities in manufacturing engineering, process improvement, and production management.
+            </p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
+                <a href="mailto:3pavansai@gmail.com" class="flex items-center bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg transition-all">
+                    <i class="fas fa-envelope mr-2"></i> 3pavansai@gmail.com
+                </a>
+                <a href="tel:8056704797" class="flex items-center bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-lg transition-all border border-gray-700">
+                    <i class="fas fa-phone mr-2"></i> (805) 670-4797
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="flex items-center bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded-lg transition-all border border-gray-700">
+                    <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                </a>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-gray-500 text-sm">
+                <p>&copy; 2024 Pavan Sai Chiriki. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Technical Specs Modal -->
+    <div id="tech-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center bg-black/70 backdrop-blur-sm transition-opacity duration-300">
+        <div class="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto m-4 bg-white rounded-xl shadow-2xl blueprint-border transform transition-all duration-300 scale-95 opacity-0 flex flex-col md:flex-row" id="modal-content">
+            
+            <!-- Left Side: Visual Technical Diagram -->
+            <div class="md:w-2/5 blueprint-bg border-r border-gray-200 p-6 flex flex-col items-center justify-center bg-gray-50">
+                <div id="modal-diagram" class="w-full aspect-square tech-diagram rounded-lg shadow-inner mb-4 flex items-center justify-center overflow-hidden">
+                    <!-- Image Injected Here -->
+                </div>
+                <div class="text-center w-full">
+                    <p class="text-xs text-gray-500 font-mono mb-3">FIGURE 1.1: SYSTEM VISUALIZATION</p>
+                    <a id="download-btn" href="#" download class="inline-flex items-center justify-center w-full px-4 py-2 bg-blue-600 text-white text-sm font-bold rounded hover:bg-blue-700 transition-colors shadow-sm">
+                        <i class="fas fa-file-pdf mr-2"></i> Download Full Report
+                    </a>
+                    <p class="text-[10px] text-gray-400 mt-2 italic">*Requires local file: <span id="file-path-hint" class="font-mono text-blue-400">documents/report.pdf</span></p>
+                </div>
+            </div>
+
+            <!-- Right Side: Data -->
+            <div class="md:w-3/5 p-8 bg-white overflow-y-auto">
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-900 transition-colors">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+                
+                <h3 id="modal-title" class="text-2xl font-bold font-oswald text-gray-900 mb-1 border-b-2 border-blue-600 pb-2 inline-block">PROJECT TITLE</h3>
+                <p id="modal-subtitle" class="text-sm font-mono text-blue-600 mb-6 uppercase tracking-wider">Technical Specification Document</p>
+                
+                <div class="grid grid-cols-1 gap-6 mb-8">
+                    <div class="bg-white p-4 border border-gray-200 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-gray-900 text-sm uppercase mb-3 flex items-center"><i class="fas fa-microchip text-blue-500 mr-2"></i> Key Specifications</h4>
+                        <ul id="modal-specs" class="space-y-2 text-sm font-mono text-gray-600">
+                            <!-- Specs injected here -->
+                        </ul>
+                    </div>
+                    <div class="bg-white p-4 border border-gray-200 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-gray-900 text-sm uppercase mb-3 flex items-center"><i class="fas fa-tools text-blue-500 mr-2"></i> Tools & Tech</h4>
+                        <div id="modal-tools" class="flex flex-wrap gap-2">
+                            <!-- Tools injected here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-100 mb-6">
+                    <h4 class="font-bold text-blue-900 text-sm uppercase mb-2">Technical Description</h4>
+                    <p id="modal-desc" class="text-sm text-blue-800 leading-relaxed font-mono">
+                        <!-- Description injected here -->
+                    </p>
+                </div>
+
+                <div class="border-t border-gray-200 pt-4 flex justify-between items-center text-xs text-gray-400 font-mono">
+                    <span>DOC_ID: <span id="modal-id">0000</span></span>
+                    <span>STATUS: <span class="text-green-600 font-bold">COMPLETED</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Widget HTML -->
+    <div id="chat-widget-container" class="fixed bottom-6 right-6 z-50">
+        <!-- Chat Toggle Button -->
+        <button id="chat-toggle" class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white p-4 rounded-full shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center w-16 h-16 relative">
+            <i class="fas fa-sparkles text-2xl absolute transition-all duration-300 opacity-100 scale-100" id="icon-open"></i>
+            <i class="fas fa-times text-2xl absolute transition-all duration-300 opacity-0 scale-50" id="icon-close"></i>
+        </button>
+
+        <!-- Chat Window -->
+        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden chat-animate origin-bottom-right" style="height: 500px;">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-cyan-500 p-4 text-white flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <i class="fas fa-robot text-sm"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm">Pavan's AI Assistant</h3>
+                        <p class="text-xs text-blue-100 flex items-center"><span class="w-2 h-2 bg-green-400 rounded-full mr-1 animate-pulse"></span> Online</p>
+                    </div>
+                </div>
+                <button id="close-chat" class="text-white/80 hover:text-white"><i class="fas fa-minus"></i></button>
+            </div>
+
+            <!-- Messages Area -->
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4 bg-gray-50">
+                <!-- Welcome Message -->
+                <div class="flex items-start space-x-2">
+                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 text-blue-600">
+                        <i class="fas fa-robot text-xs"></i>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm border border-gray-100 text-sm text-gray-700">
+                        Hi! I'm Pavan's AI assistant. Ask me anything about his engineering experience, skills, or projects! ✨
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-4 bg-white border-t border-gray-100">
+                <div class="flex space-x-2">
+                    <input type="text" id="chat-input" placeholder="Ask about Hylio, FEA, or Skills..." class="flex-1 bg-gray-100 border-0 rounded-full px-4 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all outline-none">
+                    <button id="send-btn" class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i class="fas fa-paper-plane text-xs"></i>
+                    </button>
+                </div>
+                <div class="text-[10px] text-gray-400 text-center mt-2 flex items-center justify-center">
+                    Powered by <i class="fas fa-bolt text-yellow-400 mx-1"></i> Gemini
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logic for Chat & Modal -->
+    <script>
+        // --- 1. Project Details Data & Images ---
+        
+        const projectData = {
+            'drone': {
+                title: 'AG-Series Drone Production Scale-Up',
+                id: 'AERO-001',
+                specs: [
+                    'Model: AG-210 / AG-216',
+                    'Strategy: Split Line (Pre-Assy / Assy)',
+                    'Output: Increased Daily Units',
+                    'Doc: Custom Build Manuals'
+                ],
+                tools: ['Lean Six Sigma', 'BOM Management', 'Work Orders', 'R&D Integration'],
+                desc: 'Overhauled the assembly workflow for the AG-210 and AG-216 drone models. Split the single production line into dedicated "Pre-Assembly" and "Final Assembly" stages, allowing pre-built sub-assemblies to feed directly into final integration, significantly increasing daily output. Authored comprehensive build manuals for the team and managed BOM updates. Responsible for creating work orders, managing the workforce, and verifying integration reports between R&D and Production. Saved $50k/year via Fishbowl Inventory tracking.',
+                image: 'https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&q=80&w=800',
+                file: 'Hylio_Workflow_Optimization.pdf'
+            },
+            'testing': {
+                title: 'Flight Component Testing Rig',
+                id: 'QA-002',
+                specs: [
+                    'Failure Reduction: 25%',
+                    'Test Type: Avionics & Propulsion',
+                    'Integration Time Saved: 2 Weeks',
+                    'Standard: ISO 9001 Compliant'
+                ],
+                tools: ['Custom Fixtures', 'Data Logging', 'Signal Analysis', 'Electronics'],
+                desc: 'Designed and fabricated a bespoke testing rig for validating avionics and motor controllers for Hylio\'s heavy-lift agricultural drones (AG-210/AG-216). This pre-assembly validation step prevented costly teardowns during final integration and reduced field failures by 25%. Established standardized QC protocols for carbon-fiber frame alignment and propulsion system benchmarking.',
+                image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&q=80&w=800',
+                file: 'QA_Test_Protocol.pdf'
+            },
+            'infrastructure': {
+                title: 'High-Capacity Production Line',
+                id: 'MFG-003',
+                specs: [
+                    'Throughput Increase: 25%',
+                    'Recurring Issues: -40%',
+                    'Capacity: High-Volume',
+                    'Safety: OSHA Compliant'
+                ],
+                tools: ['Process Flow Mapping', 'Equipment Procurement', 'Safety Compliance'],
+                desc: 'Led the research, procurement, and commissioning of three new high-capacity production systems at Advanced Structural Technologies. Designed custom material handling tools to improve operator ergonomics and safety. Addressed bottlenecks in the painting and curing stages to align with assembly speeds.',
+                image: 'https://images.unsplash.com/photo-1565514020176-db792f4b6d80?auto=format&fit=crop&q=80&w=800',
+                file: 'Production_Commissioning.pdf'
+            },
+            'denso': {
+                title: 'Advanced Analytics & Predictive Maintenance',
+                id: 'DATA-004',
+                specs: [
+                    'Breakdown Freq: 10% → 2%',
+                    'Maint. Cost Savings: 15%',
+                    'Uptime Improvement: +15%',
+                    'System: IoT Sensors'
+                ],
+                tools: ['Data Analytics', 'IoT', 'Preventive Maintenance', 'SQL'],
+                desc: 'Implemented an advanced analytics system to identify trends in equipment failure at DENSO Corporation, shifting from reactive to proactive maintenance strategies. Synthesized breakdown data from global DENSO locations to create a unified maintenance strategy, reducing machine breakdown frequency significantly.',
+                image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+                file: 'Predictive_Maintenance_Report.pdf'
+            },
+            'forcebalance': {
+                title: 'Experimental Force Balance',
+                id: 'RD-005',
+                specs: [
+                    'Sensor: PCB Tri-axial Accelerometer',
+                    'Flow Type: Hypersonic (Mach 5.75)',
+                    'Test Duration: < 1ms',
+                    'Material: Aluminum & Neoprene'
+                ],
+                tools: ['ANSYS Workbench', 'Impulse Hammer', 'Oscilloscope', 'PTC Creo'],
+                desc: 'Designed a multi-component accelerometer force balance for measuring drag, lift, and pitching moments in shock tunnels. Developed a free-sliding mechanism to isolate the model during the millisecond test window. Validated the design using Finite Element Analysis (FEA) in ANSYS and experimental impact hammer testing to determine impulse response.',
+                image: 'https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?auto=format&fit=crop&q=80&w=800',
+                file: 'Final BTP Report_M2.doc' // User provided file
+            },
+            'lean': {
+                title: 'AST Workflow & Preventive Maintenance',
+                id: 'OPS-006',
+                specs: [
+                    'Downtime Reduction: 30%',
+                    'Efficiency: +15% Machine Eff.',
+                    'Tools: Custom Material Handling',
+                    'Method: Root Cause Analysis'
+                ],
+                tools: ['Preventive Maintenance', 'Process Redesign', 'Safety Compliance'],
+                desc: 'Spearheaded a cross-functional team at AST to redesign the production workflow, yielding substantial improvements in operational efficiency. Implemented a 100% preventive maintenance program that reduced unplanned downtime by 30%. Designed custom material handling tools reducing operator effort and improving safety.',
+                image: 'https://images.unsplash.com/photo-1542626991-cbc4e32524cc?auto=format&fit=crop&q=80&w=800',
+                file: 'Lean_Six_Sigma_Project.pdf'
+            },
+            'robotarm': {
+                title: '6-DoF Robotic Arm (Chitti 4.0)',
+                id: 'ROBO-007',
+                specs: [
+                    'DOF: 6 (1 Prismatic, 5 Revolute)',
+                    'Control: Resolved Rate Algorithm',
+                    'Kinematics: Denavit-Hartenberg (DH)',
+                    'Simulation: ROS / RVIZ'
+                ],
+                tools: ['MATLAB', 'SolidWorks', 'ROS', 'Python'],
+                desc: 'Designed and simulated a 6-axis articulated robotic arm. Performed mathematical modeling of Forward and Inverse Kinematics using DH parameters. Validated motion planning and reachability in ROS (Robot Operating System) and RVIZ. Implemented Jacobian-based control logic in MATLAB.',
+                image: 'https://images.unsplash.com/photo-1617529497471-9218633199c0?auto=format&fit=crop&q=80&w=800',
+                file: 'Robotic Arm Project Report_Chiiti4.0.docx' // User provided file
+            },
+            'atv': {
+                title: 'ATV Design & Fabrication',
+                id: 'AUTO-008',
+                specs: [
+                    'Engine: 950 Series Briggs & Stratton',
+                    'Chassis: Carbon Fiber Composite',
+                    'Suspension: Double Wishbone',
+                    'Analysis: Stress/Strain FEA'
+                ],
+                tools: ['SolidWorks', 'FEA', 'Welding', 'Composite Layup'],
+                desc: 'Designed and fabricated a lightweight All-Terrain Vehicle (ATV) optimized for a high power-to-weight ratio. Utilized Carbon Fiber materials for the body and structural components to reduce weight without compromising strength. Performed extensive FEA stress testing in SolidWorks to validate the chassis design under dynamic loads.',
+                image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800',
+                file: 'ATV_Design_Report.pdf'
+            },
+            'qa_app': {
+                title: 'Digital QA Protocol & App',
+                id: 'SOFT-009',
+                specs: [
+                    'Platform: Mobile/Web',
+                    'Error Reduction: Significant',
+                    'Data: Cloud Synced',
+                    'Type: Digital Workflow'
+                ],
+                tools: ['App Development', 'Digitalization', 'Quality Control'],
+                desc: 'Digitized the "Flight-Critical Component Testing Protocol" into a custom software application. This digital workflow replaced manual checklists for agricultural drones, tracking serial numbers and test results in real-time, which streamlined the QA process and reduced manual data entry errors.',
+                image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800',
+                file: 'QA_App_Case_Study.pdf'
+            }
+        };
+
+        // --- 2. Initialize Thumbnails ---
+        // Automatically inject Images into project cards based on ID
+        window.addEventListener('DOMContentLoaded', () => {
+            Object.keys(projectData).forEach(key => {
+                const el = document.getElementById(`thumb-${key}`);
+                if (el && projectData[key].image) {
+                    el.innerHTML = `<img src="${projectData[key].image}" alt="${projectData[key].title}" class="project-img">`;
+                }
+            });
+        });
+
+        // --- 3. Modal Logic ---
+        const modal = document.getElementById('tech-modal');
+        const modalContent = document.getElementById('modal-content');
+
+        function openModal(projectId) {
+            const data = projectData[projectId];
+            if (!data) return;
+
+            // Populate Data
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-id').innerText = data.id;
+            document.getElementById('modal-desc').innerText = data.desc;
+            
+            // Set Diagram/Image
+            document.getElementById('modal-diagram').innerHTML = `<img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover">`;
+            
+            // Set File Path Hint
+            document.getElementById('file-path-hint').innerText = `documents/${data.file}`;
+            document.getElementById('download-btn').href = `documents/${data.file}`; 
+
+            // Populate Specs
+            const specsList = document.getElementById('modal-specs');
+            specsList.innerHTML = data.specs.map(spec => `<li><span class="text-blue-400 mr-2">></span>${spec}</li>`).join('');
+
+            // Populate Tools
+            const toolsContainer = document.getElementById('modal-tools');
+            toolsContainer.innerHTML = data.tools.map(tool => `<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-xs border border-gray-200">${tool}</span>`).join('');
+
+            // Show Modal
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // --- 4. Resume Context (The Brains) ---
+        const resumeContext = `
+        You are an AI assistant for Pavan Sai Chiriki's portfolio. You answer questions from recruiters or visitors professionally and concisely.
+        
+        PROFILE:
+        - Name: Pavan Sai Chiriki
+        - Role: Manufacturing Engineer
+        - Location: Houston, TX
+        - Email: 3pavansai@gmail.com
+        - Phone: (805) 670-4797
+        - Summary: 7+ years exp in production optimization, machine efficiency. Expert in PTC Creo, AutoCAD, SolidWorks, Lean Six Sigma, Thermal Systems Analysis.
+
+        EXPERIENCE:
+        1. Hylio Inc (Houston, TX) [Jan 2025-Present]:
+           - Production Engineer.
+           - Overhauled assembly workflow for AG-210 and AG-216 models.
+           - Created Drone Build Manuals for the team.
+           - Updated BOMs.
+           - Split production into Pre-assembly and Assembly lines to increase daily throughput.
+           - Checked integration reports between R&D and Production.
+           - Created work orders and managed workforce.
+           - Zero defects in final QC.
+           - Guided team of 15 (12 techs, 3 engineers).
+           - Reduced carbon-fiber frame lead times by 15%.
+           - Saved $50k annually via Fishbowl Inventory.
+        
+        2. Advanced Structural Technologies (Oxnard, CA) [Jan 2024-Jan 2025]:
+           - Manufacturing Engineer.
+           - Implemented 100% preventive maintenance (30% less unplanned downtime).
+           - Commissioned 3 high-capacity production systems (+25% throughput).
+           - Designed custom material handling tools.
+           - Redesigned production workflow.
+        
+        3. DENSO Corporation (Haryana, India) [Jun 2018-Aug 2022]:
+           - Senior Engineer & Engineer roles.
+           - Reduced breakdown freq from 10% to 2% via predictive maintenance.
+           - Reduced defect rates from 24% to 2.0%.
+           - Synthesized global breakdown data.
+           - Implemented advanced analytics system.
+
+        EDUCATION:
+        - M.S. Mechanical Engineering, University of South Florida (2022-2023).
+          - GPA: 3.79/4.0
+          - Key Courses: Robotic Systems (A-), Applied Elasticity (A), Fracture Mechanics (A), Python for Data Science (A), Probabilistic Systems Analysis (A), Connected & Autonomous Vehicles.
+        - B.Tech Mechanical Engineering, NIT Meghalaya (2014-2018).
+
+        KEY PROJECTS:
+        - Drone Production Scale-Up (Hylio): Cut build time 30%, zero defects.
+        - Force Balance Analysis (BTP Thesis): "Experimental and Finite Element Analysis of Accelerometer Force Balance". Used ANSYS & Impact Hammers to validate design for hypersonic testing.
+        - Advanced Analytics System (DENSO): Reduced breakdown freq from 10% to 2% and maintenance costs by 15%.
+        - 6-DoF Robotic Arm (USF Project): Designed and simulated a 6-axis robot. Used SolidWorks for design, ROS/RVIZ for visualization, and MATLAB for kinematic analysis (DH parameters, Jacobian).
+        - ATV Design & Fabrication (Bachelor's): Designed and fabricated an All-Terrain Vehicle using a 950 Series Briggs & Stratton engine. Used Carbon Fiber components for lightweighting. Performed stress/strain testing with FEA and modeled in SolidWorks.
+        - Digital QA Protocol & App (Hylio): Implemented digital QA protocols, replacing manual checklists and reducing errors.
+
+        SKILLS:
+        - Tools: PTC Creo, SolidWorks, AutoCAD, ANSYS Workbench, Fishbowl Inventory.
+        - Methods: Lean Six Sigma, PFMEA, Kaizen, Root Cause Analysis.
+        - Tech: PLC, HMI, Finite Element Analysis (FEA).
+
+        BEHAVIOR:
+        - Be friendly, professional, and brief (2-3 sentences max unless asked for detail).
+        - Use emojis sparingly.
+        - If asked for contact info, provide email/phone.
+        - If asked about something not in the resume, say "I don't have that info, but you can contact Pavan directly!"
+        `;
+
+        // --- 5. Gemini API Integration Functions ---
+        const apiKey = ""; // API Key Injected by Env
+
+        // --- 6. Chat UI Logic ---
+        const toggleBtn = document.getElementById('chat-toggle');
+        const chatWindow = document.getElementById('chat-window');
+        const closeBtn = document.getElementById('close-chat');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+        const input = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const messagesContainer = document.getElementById('chat-messages');
+
+        let isOpen = false;
+
+        function toggleChat() {
+            isOpen = !isOpen;
+            if (isOpen) {
+                chatWindow.classList.remove('hidden');
+                iconOpen.classList.remove('opacity-100', 'scale-100');
+                iconOpen.classList.add('opacity-0', 'scale-50');
+                iconClose.classList.remove('opacity-0', 'scale-50');
+                iconClose.classList.add('opacity-100', 'scale-100');
+                setTimeout(() => input.focus(), 300);
+            } else {
+                chatWindow.classList.add('hidden');
+                iconOpen.classList.add('opacity-100', 'scale-100');
+                iconOpen.classList.remove('opacity-0', 'scale-50');
+                iconClose.classList.add('opacity-0', 'scale-50');
+                iconClose.classList.remove('opacity-100', 'scale-100');
+            }
+        }
+
+        toggleBtn.addEventListener('click', toggleChat);
+        closeBtn.addEventListener('click', toggleChat);
+
+        // --- 7. Message Handling ---
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = sender === 'user' ? 'flex items-end justify-end space-x-2' : 'flex items-start space-x-2';
+            
+            const avatar = sender === 'user' 
+                ? `<div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white flex-shrink-0"><i class="fas fa-user text-xs"></i></div>`
+                : `<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0"><i class="fas fa-robot text-xs"></i></div>`;
+            
+            const bubbleColor = sender === 'user' 
+                ? 'bg-blue-600 text-white rounded-tr-none' 
+                : 'bg-white text-gray-700 border border-gray-100 rounded-tl-none';
+
+            // Parse markdown for AI responses
+            const content = sender === 'bot' ? marked.parse(text) : text;
+
+            div.innerHTML = sender === 'user' 
+                ? `<div class="max-w-[80%] p-3 rounded-2xl ${bubbleColor} shadow-sm text-sm">${content}</div>${avatar}`
+                : `${avatar}<div class="max-w-[80%] p-3 rounded-2xl ${bubbleColor} shadow-sm text-sm prose prose-sm">${content}</div>`;
+            
+            messagesContainer.appendChild(div);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTyping() {
+            const div = document.createElement('div');
+            div.id = 'typing-indicator';
+            div.className = 'flex items-start space-x-2';
+            div.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0"><i class="fas fa-robot text-xs"></i></div>
+                <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-gray-100 flex space-x-1 h-10 items-center">
+                    <div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div>
+                    <div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div>
+                </div>
+            `;
+            messagesContainer.appendChild(div);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function removeTyping() {
+            const el = document.getElementById('typing-indicator');
+            if (el) el.remove();
+        }
+
+        // --- 8. Gemini API Integration (Chat) ---
+        async function handleSend() {
+            const text = input.value.trim();
+            if (!text) return;
+
+            addMessage(text, 'user');
+            input.value = '';
+            input.disabled = true;
+            showTyping();
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            role: "user",
+                            parts: [{ text: `Context: ${resumeContext}\n\nUser Question: ${text}` }]
+                        }],
+                        systemInstruction: {
+                            parts: [{ text: "You are Pavan's portfolio assistant. Use the provided context to answer questions. Keep answers short, professional, and friendly." }]
+                        }
+                    })
+                });
+
+                const data = await response.json();
+                removeTyping();
+
+                if (data.error) {
+                    addMessage("Oops! I'm having trouble connecting to my brain right now. Please try again later.", 'bot');
+                    console.error(data.error);
+                } else {
+                    const reply = data.candidates[0].content.parts[0].text;
+                    addMessage(reply, 'bot');
+                }
+
+            } catch (error) {
+                removeTyping();
+                addMessage("Sorry, something went wrong. Please check your connection.", 'bot');
+                console.error(error);
+            } finally {
+                input.disabled = false;
+                input.focus();
+            }
+        }
+
+        sendBtn.addEventListener('click', handleSend);
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSend();
+        });
+
+        // Simple Mobile Menu Toggle (Existing)
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
